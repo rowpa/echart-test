@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { fetchBitcoinPrice } from './lib/api';
+import { fetchBitcoinPrice, fetchBitcoinPrice2 } from './lib/api';
 import ReactECharts from 'echarts-for-react';
 
 const BitcoinChart = () => {
@@ -9,7 +9,13 @@ const BitcoinChart = () => {
     queryKey: ['bitcoinPrice'],
     queryFn: fetchBitcoinPrice,
   });
+  // console.log(data);
+  const { data: deailydata } = useQuery({
+    queryKey: ['bitcoinPrice2'],
+    queryFn: fetchBitcoinPrice2,
+  });
 
+  // console.log(deailydata);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error fetching data</div>;
 
