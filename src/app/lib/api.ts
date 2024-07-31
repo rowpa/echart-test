@@ -1,6 +1,6 @@
 // src/lib/api.ts
 import axios from 'axios';
-
+import { useQuery } from '@tanstack/react-query';
 const API_KEY = process.env.COINT_API_KEY;
 const BASE_URL = 'https://min-api.cryptocompare.com/data';
 // fsym = 코인 종류 tsyms = 나라별 화폐
@@ -53,4 +53,17 @@ export const fetchBitcoinPrice2 = async () => {
     console.error('Error fetching Bitcoin price:', error);
     throw new Error('Error fetching Bitcoin price');
   }
+};
+
+const fetchCryptoData = async () => {
+  const response = await axios.get('https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD,EUR');
+  return response.data;
+};
+
+export const useCryptoData = () => {
+  return useQuery({
+    queryKey: ['cryptoData'],
+    queryFn: fetchCryptoData,
+    refetchInterval: 5000, // 5초 간격으로 callback 옵션
+  });
 };

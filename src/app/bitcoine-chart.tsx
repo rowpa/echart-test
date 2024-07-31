@@ -50,3 +50,62 @@ const BitcoinChart = () => {
 };
 
 export default BitcoinChart;
+
+// 'use client';
+// import React from 'react';
+// import ReactECharts from 'echarts-for-react';
+// import { useCryptoData } from '../_actions/get-data';
+
+// const PieChart: React.FC = () => {
+//   const { data, isLoading, isError } = useCryptoData();
+
+//   if (isLoading) return <div>Loading...</div>;
+//   if (isError) return <div>Error fetching data</div>;
+
+//   const options = {
+//     title: {
+//       text: 'Crypto Prices',
+//       subtext: 'Distribution of Prices',
+//       left: 'center',
+//     },
+//     tooltip: {
+//       trigger: 'item',
+//     },
+//     legend: {
+//       orient: 'vertical',
+//       left: 'left',
+//     },
+//     series: [
+//       {
+//         name: 'Price',
+//         type: 'pie',
+//         radius: '70%',
+//         data: [
+//           { value: data.USD, name: 'USD' },
+//           { value: data.EUR, name: 'EUR' },
+//         ],
+//         emphasis: {
+//           itemStyle: {
+//             shadowBlur: 10,
+//             shadowOffsetX: 0,
+//             shadowColor: 'rgba(0, 0, 0, 0.5)',
+//           },
+//         },
+//       },
+//     ],
+//   };
+
+//   return (
+//     <div>
+//       {data && !isLoading && (
+//         <div>
+//           <p className="text">{'USD' + data.USD}</p>
+//           <p>{'EUR' + data.EUR}</p>
+//         </div>
+//       )}
+//       <ReactECharts option={options} />
+//     </div>
+//   );
+// };
+
+// export default PieChart;
